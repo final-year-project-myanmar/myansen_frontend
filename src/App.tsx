@@ -5,6 +5,7 @@ import NavBarMenuPage from "@/pages/navbarMenu/navbarmenu";
 import Footer from "@/components/Footer";
 
 
+
 function App() {
   
   return (
@@ -17,6 +18,7 @@ function App() {
 
         <Footer year={2025} companyName="MyanmarSentiment API" />
       </div>
+
     </>
   );
 }
