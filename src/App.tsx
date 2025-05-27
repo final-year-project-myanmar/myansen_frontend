@@ -9,12 +9,16 @@ import { Route, Routes } from "react-router-dom";
 
 
 
+import Footer from "@/components/Footer";
+
+
+
 
 function App() {
   
   return (
     <>
-      <div className="flex flex-col min-h-dvh">
+    <div className="flex flex-col min-h-dvh">
         <NavBarMenuPage />
         <main className="flex-grow">
           <Routes>
@@ -22,6 +26,7 @@ function App() {
             <Route path="/testmlops" element={< TestMLOpsPage/>}></Route>
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
+
         </main>
 
         <Footer year={2025} companyName="MyanmarSentiment API" />
