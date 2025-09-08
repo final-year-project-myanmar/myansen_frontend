@@ -12,6 +12,7 @@ import DashboardPage from "@/pages/dashboardPage/dashboardpage";
 
 import ProtectedRoutes from "@/utils/protectedRoutes";
 import Reset from "./pages/auth/reset";
+import ApiDocPage from "@/pages/apiservices/ApiDocPage";
 
 export const router = createBrowserRouter([
   {
@@ -34,8 +35,8 @@ export const router = createBrowserRouter([
             element: <ApiServicesPage />,
           },
           {
-            path: "/testmlops",
-            element: <TestMLOpsPage />,
+            path: "/apikeydoc",
+            element: <ApiDocPage />,
           },
         ],
       },
