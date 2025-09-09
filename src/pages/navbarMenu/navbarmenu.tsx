@@ -14,6 +14,7 @@ export default function NavBarMenuPage() {
       label: "User Guide",
       link: "/apikeydoc",
     },
+
   ];
   return <NavBar logoText="MyanSen" navItems={navItems} />;
 }

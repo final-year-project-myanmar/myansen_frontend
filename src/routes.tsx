@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 
 import HomePage from "@/pages/home/homepage";
-import TestMLOpsPage from "@/pages/testMLOps/testMLOpsPage";
+
 import NotFoundPage from "@/pages/ErrorPage/NotFoundPage";
 import Login from "@/pages/auth/login";
 import Register from "@/pages/auth/register";
@@ -34,10 +34,12 @@ export const router = createBrowserRouter([
             path: "/apiservices",
             element: <ApiServicesPage />,
           },
+
           {
             path: "/apikeydoc",
             element: <ApiDocPage />,
           },
+
         ],
       },
       {
