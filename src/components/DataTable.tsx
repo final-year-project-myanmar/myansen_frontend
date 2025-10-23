@@ -111,9 +111,11 @@ export function DataTable<TData, TValue>({
           <TableBody>
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => {
-                let sentimentScore: number = row.getValue(
-                  "confidence"
-                ) as number;
+                const original = row.original as { confidence?: number };
+                const sentimentScore = original.confidence ?? 1; // default if missing
+                // let sentimentScore: number = row.getValue(
+                //   "confidence"
+                // ) as number;
                 const shouldHighlight = sentimentScore <= 0.6;
 
                 return (

@@ -3,8 +3,6 @@ export type ApiKey = {
   public_key: string;
   hash_key: string;
   created_at: string;
-  last_used_at: string | null;
+  lastused_at: string;
   account_status: string;
-  
-
 };

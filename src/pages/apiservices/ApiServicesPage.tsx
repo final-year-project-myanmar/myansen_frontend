@@ -11,8 +11,8 @@ import { useNavigate } from "react-router-dom";
 
 export default function ApiServicesPage() {
   const navigate = useNavigate();
-  //const [apiKeys, setApiKeys] = useState<ApiKey[]>([]);
-  const [apiKeys, setApiKeys] = useState([]);
+  const [apiKeys, setApiKeys] = useState<ApiKey[]>([]);
+  //const [apiKeys, setApiKeys] = useState([]);
   const [newKeyName, setNewKeyName] = useState<string>("");
   const { toast } = useToast();
   let tokenRef = useRef<string | null>(null);
@@ -97,7 +97,7 @@ export default function ApiServicesPage() {
 
   // Function to handle key generation (mocked)
   const handleGenerateKey = async () => {
-    const newKey = {
+    const newKey :ApiKey = {
       key_name: newKeyName,
       public_key: "",
       hash_key: "",
@@ -149,7 +149,8 @@ export default function ApiServicesPage() {
     newKey.lastused_at = result.data.lastused_at;
     newKey.public_key = result.data.public_key;
     console.log("New API Key Created:", result.data.key_name);
-    setApiKeys((prevKeys) => [...prevKeys, newKey]);
+    // setApiKeys(prevKeys => [...(prevKeys?? []), newKey]);
+    setApiKeys((prev) => (Array.isArray(prev) ? [...prev, newKey] : [newKey]));
     setNewKeyName("");
 
     toast({
@@ -171,6 +172,7 @@ export default function ApiServicesPage() {
         <h1 className="text-2xl font-bold">Create New API Key</h1>
         <div className="flex gap-4 items-center place-content-end ">
           <Textarea
+            data-testid="api-keyname-input"
             className="w-96 h-30 inline-block align-baseline resize-none"
             placeholder="Key name (eg-production,testing,etc...)"
             value={newKeyName}
