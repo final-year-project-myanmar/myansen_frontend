@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 
 
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8000";
+const API_BASE_URL =  "http://localhost:8000";
 const API_VERSION = "/api/v1/"
 
 //get text and feeback to make dataset
