@@ -167,6 +167,11 @@ export default function DashboardPage() {
     () => sentimentColumns(handleSubmitFeedback),
     [handleSubmitFeedback]
   );
+  useEffect(() => {
+    console.log("Location state:", location.state);
+    console.log("API Response:", apiResponse);
+    console.log("Sentiment columns data:", sentimentColumnsData);
+  }, [location.state, apiResponse, sentimentColumnsData]);
 
   return (
     <>
@@ -205,6 +210,7 @@ export default function DashboardPage() {
           )}
 
           <Button
+            data-testid="retrain-model-btn"
             variant="outline"
             className="outline relative text-teal-600 hover:bg-teal-600 hover:text-white ml-4"
             onClick={() => processUploadingDataSetToS3(sentimentColumnsData)}
@@ -222,10 +228,14 @@ export default function DashboardPage() {
       {/* Progress for feedback collection */}
       <div className="mx-3 mb-4 bg-[#e5fffc] items-center p-2 px-5 pt-3 rounded-xl">
         <div className="flex justify-between">
-          <h4 className="mb-1">Feedback collected: {collectedFeedback}</h4>
+          <h4 className="mb-1"
+            data-testid="feedback-collected-value">
+            Feedback collected: {collectedFeedback}
+          </h4>
           <small>Goal: {targetFeedback}</small>
         </div>
         <ProgressGame
+          data-testid="feedback-progress-bar"
           value={progress}
           className="mb-5 w-[100%]"
           showPercent={false}
@@ -234,15 +244,18 @@ export default function DashboardPage() {
         />
       </div>
       <DataTable
+        data-testid = "sentiment-data-table"
         columns={columns}
         data={sentimentColumnsData}
         noCase={noCase}
         itemsPerPage={3}
       />
-      <div className="mx-3 py-5">
+      <div data-testid="wordcloud" className="mx-3 py-5">
         <Dialog>
           <DialogTrigger asChild>
-            <Button className="bg-teal-700 text-white hover:bg-teal-600">
+            <Button
+              data-testid="open-wordcloud-btn"
+              className="bg-teal-700 text-white hover:bg-teal-600">
               View Wordclouds
             </Button>
           </DialogTrigger>
@@ -273,7 +286,7 @@ export default function DashboardPage() {
 
                 {wordFreq.length > 0 ? (
                   <div className="w-full h-[60vh] flex items-center justify-center bg-gray-50 rounded-lg shadow-inner">
-                    <WordCloudSVG words={wordFreq} />
+                    <WordCloudSVG data-testid="wordcloud-svg" words={wordFreq} />
                   </div>
                 ) : (
                   <p className="text-sm text-gray-500">
