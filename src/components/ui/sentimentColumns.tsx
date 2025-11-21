@@ -1,10 +1,6 @@
 import { ColumnDef } from "@tanstack/react-table";
-import { Button } from "@/components/ui/button";
 import { type SentimentColumn } from "@/types/sentimentColums";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
 import { Badge } from "./badge";
-import { useState } from "react";
 import { FeedbackCell } from "@/components/FeedBackCell";
 
 

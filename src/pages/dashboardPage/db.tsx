@@ -1,6 +1,6 @@
 import { DataTable } from "@/components/DataTable";
 import { useLocation } from "react-router-dom";
-import { sentimentColumns } from "@/components/sentimentColumns";
+import { sentimentColumns } from "@/components/ui/sentimentColumns";
 import { type SentimentColumn } from "@/types/sentimentColums";
 import { Button } from "@/components/ui/button";
 import { icons } from "@/components/icons";
@@ -59,7 +59,7 @@ export default function DashboardPage() {
         </div>
       </div>
       <DataTable
-        columns={sentimentColumns}
+        columns={sentimentColumns()}
         data={sentimentData}
         noCase={noCase}
         itemsPerPage={3}
